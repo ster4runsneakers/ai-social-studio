@@ -1,3 +1,4 @@
+HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# AI Content Studio
+
+Εφαρμογή δημιουργίας περιεχομένου για social media με captions, hooks, CTA, hashtags, emojis και μελλοντικές δυνατότητες (εικόνες, βίντεο, backup κλπ).
+
+## Τεχνολογίες
+- React για το frontend
+- Node.js/Express για το backend (προαιρετικά)
+- OpenAI API για παραγωγή κειμένου (προαιρετικά)
+
+## Εκκίνηση (ανάπτυξη)
+```bash
+npm install
+npm start
+```
+a83b4193f099d67aa3c7dbeea080f54f2de5acbb
