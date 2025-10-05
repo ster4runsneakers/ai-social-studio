@@ -1,57 +1,56 @@
-import React, { useState } from 'react';
+import React from "react";
 
-function SocialPostCreator() {
-  const [language, setLanguage] = useState('en');
-  const [parts, setParts] = useState({
-    caption: true,
-    hook: true,
-    cta: true,
-    hashtags: true,
-  });
-  const [useEmojis, setUseEmojis] = useState(true);
-
-  const handleChange = (e) => {
-    setParts({ ...parts, [e.target.name]: e.target.checked });
+function SocialPostCreator({ lang }) {
+  // Κείμενα για διγλωσσία
+  const messages = {
+    en: {
+      title: "Create Social Media Post",
+      caption: "Caption",
+      hook: "Hook",
+      cta: "Call to Action",
+      hashtags: "Hashtags",
+      emojis: "Add Emojis",
+      generate: "Generate",
+    },
+    el: {
+      title: "Δημιουργία Δημοσίευσης για Social Media",
+      caption: "Κείμενο",
+      hook: "Hook",
+      cta: "Παρότρυνση (CTA)",
+      hashtags: "Hashtags",
+      emojis: "Προσθήκη Emojis",
+      generate: "Δημιούργησε",
+    },
   };
 
-  const handleGenerate = () => {
-    // Εδώ θα βάλεις τη λογική παραγωγής περιεχομένου (AI, κλπ)
-    alert('Generated post!');
-  };
+  const t = messages[lang];
 
   return (
     <div>
-      <h2>Δημιουργία Δημοσίευσης για Social Media</h2>
-      <label>
-        Επιλογή Γλώσσας:
-        <select value={language} onChange={e => setLanguage(e.target.value)}>
-          <option value="en">Αγγλικά</option>
-          <option value="el">Ελληνικά</option>
-        </select>
-      </label>
-      <div>
+      <h2>{t.title}</h2>
+      <form>
         <label>
-          <input type="checkbox" name="caption" checked={parts.caption} onChange={handleChange} />
-          Caption
+          <input type="checkbox" />
+          {t.caption}
         </label>
         <label>
-          <input type="checkbox" name="hook" checked={parts.hook} onChange={handleChange} />
-          Hook
+          <input type="checkbox" />
+          {t.hook}
         </label>
         <label>
-          <input type="checkbox" name="cta" checked={parts.cta} onChange={handleChange} />
-          CTA
+          <input type="checkbox" />
+          {t.cta}
         </label>
         <label>
-          <input type="checkbox" name="hashtags" checked={parts.hashtags} onChange={handleChange} />
-          Hashtags
+          <input type="checkbox" />
+          {t.hashtags}
         </label>
-      </div>
-      <label>
-        <input type="checkbox" checked={useEmojis} onChange={e => setUseEmojis(e.target.checked)} />
-        Προσθήκη Emojis
-      </label>
-      <button onClick={handleGenerate}>Δημιούργησε</button>
+        <label>
+          <input type="checkbox" />
+          {t.emojis}
+        </label>
+        <button type="button">{t.generate}</button>
+      </form>
     </div>
   );
 }
