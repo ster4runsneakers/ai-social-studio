@@ -48,4 +48,8 @@ function SocialPostCreatorChakra({ lang }) {
   );
 }
 
+<<<<<<< HEAD
 export default SocialPostCreatorChakra;
+=======
+export default SocialPostCreatorChakra;
+>>>>>>> 81e58428818b790e4e044f65450d5eebab4bdd7a
