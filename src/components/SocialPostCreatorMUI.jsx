@@ -31,20 +31,13 @@ const messages = {
   },
 };
 
-function SocialPostCreator({ lang }) {
-  const t = messages[lang];
+function SocialPostCreatorMUI({ lang }) {
+  const t = messages[lang] || messages.en;
   const isMobile = useMediaQuery("(max-width:600px)");
 
   return (
     <Box sx={{ my: 2 }}>
-      <Paper
-        elevation={3}
-        sx={{
-          p: isMobile ? 2 : 3,
-          maxWidth: 480,
-          mx: "auto",
-        }}
-      >
+      <Paper elevation={3} sx={{ p: isMobile ? 2 : 3, maxWidth: 480, mx: "auto" }}>
         <Typography variant={isMobile ? "h6" : "h5"} sx={{ mb: 2, fontWeight: "bold" }}>
           {t.title}
         </Typography>
@@ -65,4 +58,4 @@ function SocialPostCreator({ lang }) {
   );
 }
 
-export default SocialPostCreator;
+export default SocialPostCreatorMUI;
