@@ -1,50 +1,66 @@
 import React, { useState } from "react";
-import SocialPostCreatorMUI from "./components/SocialPostCreatorMUI";
+import { ConfigProvider, theme } from "antd";
 import SocialPostCreatorAntD from "./components/SocialPostCreatorAntD";
-import SocialPostCreatorChakra from "./components/SocialPostCreatorChakra";
 
-const translations = {
-  en: {
-    language: "Language:",
-    ui: "UI Style:",
-    mui: "Material UI",
-    antd: "Ant Design",
-    chakra: "Chakra UI",
+const themes = {
+  light: {
+    name: "Light",
+    algorithm: theme.defaultAlgorithm,
+    token: {
+      colorPrimary: "#1890ff",
+      borderRadius: 6,
+    },
   },
-  el: {
-    language: "Γλώσσα:",
-    ui: "Εμφάνιση UI:",
-    mui: "Material UI",
-    antd: "Ant Design",
-    chakra: "Chakra UI",
+  dark: {
+    name: "Dark",
+    algorithm: theme.darkAlgorithm,
+    token: {
+      colorPrimary: "#177ddc",
+      borderRadius: 6,
+    },
+  },
+  ocean: {
+    name: "Ocean",
+    algorithm: theme.defaultAlgorithm,
+    token: {
+      colorPrimary: "#0093E9",
+      colorBgContainer: "#e3f6fd",
+      borderRadius: 12,
+    },
+  },
+  sunset: {
+    name: "Sunset",
+    algorithm: theme.darkAlgorithm,
+    token: {
+      colorPrimary: "#ff6e7f",
+      colorBgContainer: "#2b273f",
+      borderRadius: 20,
+    },
   },
 };
 
 function App() {
-  const [lang, setLang] = useState("en");
-  const [ui, setUI] = useState("mui");
+  const [themeKey, setThemeKey] = useState("light");
 
   return (
-    <div>
-      <label style={{ marginRight: 15 }}>
-        {translations[lang].language}
-        <select value={lang} onChange={e => setLang(e.target.value)} style={{ marginLeft: 5 }}>
-          <option value="en">English</option>
-          <option value="el">Ελληνικά</option>
-        </select>
-      </label>
-      <label>
-        {translations[lang].ui}
-        <select value={ui} onChange={e => setUI(e.target.value)} style={{ marginLeft: 5 }}>
-          <option value="mui">{translations[lang].mui}</option>
-          <option value="antd">{translations[lang].antd}</option>
-          <option value="chakra">{translations[lang].chakra}</option>
-        </select>
-      </label>
-      {ui === "mui" && <SocialPostCreatorMUI lang={lang} />}
-      {ui === "antd" && <SocialPostCreatorAntD lang={lang} />}
-      {ui === "chakra" && <SocialPostCreatorChakra lang={lang} />}
-    </div>
+    <ConfigProvider
+      theme={{
+        algorithm: themes[themeKey].algorithm,
+        token: themes[themeKey].token,
+      }}
+    >
+      <div style={{ padding: 24, minHeight: "100vh", background: themes[themeKey].token.colorBgContainer || undefined }}>
+        <label style={{ marginBottom: 20, display: "inline-block" }}>
+          Theme:&nbsp;
+          <select value={themeKey} onChange={e => setThemeKey(e.target.value)}>
+            {Object.entries(themes).map(([key, t]) => (
+              <option value={key} key={key}>{t.name}</option>
+            ))}
+          </select>
+        </label>
+        <SocialPostCreatorAntD lang="en" />
+      </div>
+    </ConfigProvider>
   );
 }
 
