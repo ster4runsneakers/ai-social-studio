@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import SocialPostCreator from "./components/SocialPostCreator"; // <-- Εισαγωγή του component
+import SocialPostCreator from "./components/SocialPostCreator";
 
-const messages = {
+const translations = {
   en: {
-    welcome: "Welcome to AI Social Studio!",
+    title: "Welcome to AI Social Studio!",
     description: "Start building your app here.",
     language: "Language:",
   },
   el: {
-    welcome: "Καλώς ήρθες στο AI Social Studio!",
+    title: "Καλώς ήρθες στο AI Social Studio!",
     description: "Ξεκίνα να χτίζεις την εφαρμογή σου εδώ.",
     language: "Γλώσσα:",
   },
@@ -20,15 +20,15 @@ function App() {
   return (
     <div>
       <label>
-        {messages[lang].language}
+        {translations[lang].language}
         <select value={lang} onChange={e => setLang(e.target.value)}>
           <option value="en">English</option>
           <option value="el">Ελληνικά</option>
         </select>
       </label>
-      <h1>{messages[lang].welcome}</h1>
-      <p>{messages[lang].description}</p>
-      
+      <h1>{translations[lang].title}</h1>
+      <p>{translations[lang].description}</p>
+
       {/* ΕΔΩ εμφανίζεται το SocialPostCreator */}
       <SocialPostCreator lang={lang} />
     </div>
