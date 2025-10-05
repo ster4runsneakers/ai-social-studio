@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import SocialPostCreator from "./components/SocialPostCreator";
 
 function App() {
+  const [lang, setLang] = useState("el"); // Ή "en" για default Αγγλικά
+
+  const messages = {
+    en: { language: "Language:" },
+    el: { language: "Γλώσσα:" },
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <label>
+        {messages[lang].language}
+        <select value={lang} onChange={e => setLang(e.target.value)}>
+          <option value="el">Ελληνικά</option>
+          <option value="en">English</option>
+        </select>
+      </label>
+      <SocialPostCreator lang={lang} />
     </div>
   );
 }
