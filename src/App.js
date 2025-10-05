@@ -28,8 +28,6 @@ function App() {
       </label>
       <h1>{translations[lang].title}</h1>
       <p>{translations[lang].description}</p>
-
-      {/* ΕΔΩ εμφανίζεται το SocialPostCreator */}
       <SocialPostCreator lang={lang} />
     </div>
   );
