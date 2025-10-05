@@ -39,7 +39,31 @@ const themes = {
   },
 };
 
+const translations = {
+  en: {
+    language: "Language:",
+    theme: "Theme:",
+    themes: {
+      light: "Light",
+      dark: "Dark",
+      ocean: "Ocean",
+      sunset: "Sunset",
+    },
+  },
+  el: {
+    language: "Γλώσσα:",
+    theme: "Θέμα εμφάνισης:",
+    themes: {
+      light: "Φωτεινό",
+      dark: "Σκοτεινό",
+      ocean: "Ωκεανός",
+      sunset: "Δύση Ηλίου",
+    },
+  },
+};
+
 function App() {
+  const [lang, setLang] = useState("en");
   const [themeKey, setThemeKey] = useState("light");
 
   return (
@@ -50,15 +74,22 @@ function App() {
       }}
     >
       <div style={{ padding: 24, minHeight: "100vh", background: themes[themeKey].token.colorBgContainer || undefined }}>
-        <label style={{ marginBottom: 20, display: "inline-block" }}>
-          Theme:&nbsp;
-          <select value={themeKey} onChange={e => setThemeKey(e.target.value)}>
-            {Object.entries(themes).map(([key, t]) => (
-              <option value={key} key={key}>{t.name}</option>
+        <label style={{ marginRight: 15 }}>
+          {translations[lang].language}
+          <select value={lang} onChange={e => setLang(e.target.value)} style={{ marginLeft: 5 }}>
+            <option value="en">English</option>
+            <option value="el">Ελληνικά</option>
+          </select>
+        </label>
+        <label>
+          {translations[lang].theme}
+          <select value={themeKey} onChange={e => setThemeKey(e.target.value)} style={{ marginLeft: 5 }}>
+            {Object.entries(translations[lang].themes).map(([key, name]) => (
+              <option value={key} key={key}>{name}</option>
             ))}
           </select>
         </label>
-        <SocialPostCreatorAntD lang="en" />
+        <SocialPostCreatorAntD lang={lang} />
       </div>
     </ConfigProvider>
   );
