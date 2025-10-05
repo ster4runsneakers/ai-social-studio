@@ -28,6 +28,7 @@ function App() {
       </label>
       <h1>{translations[lang].title}</h1>
       <p>{translations[lang].description}</p>
+      {/* ΕΔΩ ΕΜΦΑΝΙΖΕΤΑΙ ΤΟ COMPONENT */}
       <SocialPostCreator lang={lang} />
     </div>
   );
