@@ -1,7 +1,7 @@
+
 import React from "react";
 
 function SocialPostCreator({ lang }) {
-  // Κείμενα για διγλωσσία
   const messages = {
     en: {
       title: "Create Social Media Post",
