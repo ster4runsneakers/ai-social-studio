@@ -1,5 +1,12 @@
 import React from "react";
-import { Card, Typography, Checkbox, Button, Space } from "antd";
+import {
+  Box,
+  Heading,
+  Checkbox,
+  VStack,
+  Button,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 
 const messages = {
   en: {
@@ -22,28 +29,23 @@ const messages = {
   },
 };
 
-function SocialPostCreatorAntD({ lang }) {
+function SocialPostCreatorChakra({ lang }) {
   const t = messages[lang] || messages.en;
+  const size = useBreakpointValue({ base: "md", md: "lg" });
 
   return (
-    <Card style={{ maxWidth: 400, margin: "24px auto" }}>
-      <Typography.Title level={4}>{t.title}</Typography.Title>
-      <Space direction="vertical" size="middle" style={{ width: "100%" }}>
+    <Box maxW="400px" mx="auto" my={8} p={6} borderRadius="lg" bg="gray.50" boxShadow="md">
+      <Heading as="h2" size={size} mb={4} textAlign="center">{t.title}</Heading>
+      <VStack spacing={3} align="stretch">
         <Checkbox defaultChecked>{t.caption}</Checkbox>
         <Checkbox defaultChecked>{t.hook}</Checkbox>
         <Checkbox defaultChecked>{t.cta}</Checkbox>
         <Checkbox defaultChecked>{t.hashtags}</Checkbox>
         <Checkbox defaultChecked>{t.emojis}</Checkbox>
-        <Button type="primary" block>
-          {t.generate}
-        </Button>
-      </Space>
-    </Card>
+        <Button colorScheme="teal">{t.generate}</Button>
+      </VStack>
+    </Box>
   );
 }
 
-        HEAD
-export default SocialPostCreatorAntD;
-
-export default SocialPostCreatorAntD;
-        f6533232aa753206a0de83f30c855a6bb61a997c
+export default SocialPostCreatorChakra;

@@ -32,6 +32,16 @@ form label {
   }
   h1, h2 {
     font-size: 1.3em;
+<<<<<<< HEAD
+=======
+  }
+  form {
+    flex-direction: column;
+    gap: 7px;
+  }
+  form label {
+    min-width: 90px;
+>>>>>>> f6533232aa753206a0de83f30c855a6bb61a997c
   }
   form {
     flex-direction: column;

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import "antd/dist/reset.css";
+>>>>>>> f6533232aa753206a0de83f30c855a6bb61a997c
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
